@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface FooterProps {
   onLegalClick: () => void;
@@ -6,6 +7,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onLegalClick, onHomeClick }) => {
+  const { t } = useLanguage();
   const handleScrollTo = (id: string) => {
     onHomeClick();
     if (id === 'top') {
@@ -33,7 +35,7 @@ const Footer: React.FC<FooterProps> = ({ onLegalClick, onHomeClick }) => {
               <span className="text-2xl font-black tracking-tighter text-white">Design by Diana</span>
             </div>
             <p className="text-gray-400 max-w-sm mb-10 leading-relaxed font-light text-lg">
-              Deine Partnerin für Digitalisierung auf Augenhöhe. Ich helfe kleinen Unternehmen, den digitalen Schritt zu wagen – mit Herz und Verstand.
+              {t('footer.description')}
             </p>
             <div className="flex gap-6">
               {['Facebook', 'Instagram', 'LinkedIn'].map((social) => (
@@ -45,26 +47,26 @@ const Footer: React.FC<FooterProps> = ({ onLegalClick, onHomeClick }) => {
             </div>
           </div>
           <div>
-            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white mb-8">Navigation</h4>
+            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white mb-8">{t('footer.navigation')}</h4>
             <ul className="space-y-4 text-gray-400 font-light">
-              <li><button onClick={() => handleScrollTo('top')} className="hover:text-cyan-400 transition-colors text-left">Startseite</button></li>
-              <li><button onClick={() => handleScrollTo('leistungen')} className="hover:text-cyan-400 transition-colors text-left">Leistungen</button></li>
-              <li><button onClick={() => handleScrollTo('preise')} className="hover:text-cyan-400 transition-colors text-left">Preismodelle</button></li>
-              <li><button onClick={() => handleScrollTo('über-mich')} className="hover:text-cyan-400 transition-colors text-left">Über mich</button></li>
+              <li><button onClick={() => handleScrollTo('top')} className="hover:text-cyan-400 transition-colors text-left">{t('nav.startseite')}</button></li>
+              <li><button onClick={() => handleScrollTo('leistungen')} className="hover:text-cyan-400 transition-colors text-left">{t('nav.leistungen')}</button></li>
+              <li><button onClick={() => handleScrollTo('preise')} className="hover:text-cyan-400 transition-colors text-left">{t('nav.preismodelle')}</button></li>
+              <li><button onClick={() => handleScrollTo('über-mich')} className="hover:text-cyan-400 transition-colors text-left">{t('nav.überMich')}</button></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white mb-8">Rechtliches</h4>
+            <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white mb-8">{t('footer.legal')}</h4>
             <ul className="space-y-4 text-gray-400 font-light">
-              <li><button onClick={onLegalClick} className="hover:text-cyan-400 transition-colors text-left">Impressum</button></li>
-              <li><button onClick={onLegalClick} className="hover:text-cyan-400 transition-colors text-left">Datenschutz</button></li>
-              <li><a href="#" className="hover:text-cyan-400 transition-colors">AGB</a></li>
-              <li><a href="#" className="hover:text-cyan-400 transition-colors">Widerruf</a></li>
+              <li><button onClick={onLegalClick} className="hover:text-cyan-400 transition-colors text-left">{t('footer.impressum')}</button></li>
+              <li><button onClick={onLegalClick} className="hover:text-cyan-400 transition-colors text-left">{t('footer.datenschutz')}</button></li>
+              <li><a href="#" className="hover:text-cyan-400 transition-colors">{t('footer.agb')}</a></li>
+              <li><a href="#" className="hover:text-cyan-400 transition-colors">{t('footer.widerruf')}</a></li>
             </ul>
           </div>
         </div>
         <div className="pt-12 border-t border-white/5 text-center text-gray-600 text-xs font-bold uppercase tracking-widest">
-          <p>&copy; {new Date().getFullYear()} Design by Diana. Alle Rechte vorbehalten.</p>
+          <p>&copy; {new Date().getFullYear()} Design by Diana. {t('footer.copyright')}</p>
         </div>
       </div>
     </footer>

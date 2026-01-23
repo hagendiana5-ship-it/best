@@ -1,6 +1,8 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Contact: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <section id="kontaktformular" className="py-20 relative bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -11,9 +13,9 @@ const Contact: React.FC = () => {
           
           <div className="flex flex-col lg:flex-row items-center gap-10 relative z-10">
             <div className="lg:w-1/3 text-center lg:text-left">
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">Gratis Design-Entwurf</h2>
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">{t('contact.title')}</h2>
               <p className="text-gray-400 font-light leading-relaxed">
-                Ich erstelle dir unverbindlich ein erstes Sample deiner neuen Website.
+                {t('contact.subtitle')}
               </p>
             </div>
 
@@ -56,14 +58,14 @@ const Contact: React.FC = () => {
                   <input 
                     type="email" 
                     name="email"
-                    placeholder="Deine E-Mail-Adresse" 
+                    placeholder={t('contact.emailPlaceholder')} 
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/50 transition-all text-sm"
                     required
                   />
                 </div>
 
                 <button type="submit" className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-2xl font-bold text-sm hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] hover:scale-[1.02] transition-all duration-300">
-                  Jetzt mein gratis Website-Sample anfordern
+                  {t('contact.submit')}
                 </button>
               </form>
             </div>
@@ -72,7 +74,7 @@ const Contact: React.FC = () => {
           <div className="mt-6 flex justify-center lg:justify-end">
              <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-               Persönliche Bearbeitung innerhalb von 24h
+               {t('contact.processing')}
              </p>
           </div>
         </div>

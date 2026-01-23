@@ -1,7 +1,9 @@
 
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero: React.FC = () => {
+  const { t } = useLanguage();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -35,17 +37,16 @@ const Hero: React.FC = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
           </span>
-          Digitalisierung einfach gemacht
+          {t('hero.badge')}
         </div>
         
         <h1 className="text-6xl md:text-8xl font-black text-white leading-tight mb-8 tracking-tighter drop-shadow-2xl">
-          Dein Business.<br />
-          <span className="grad-text">Digital. Persönlich.</span>
+          {t('hero.title')}<br />
+          <span className="grad-text">{t('hero.titleHighlight')}</span>
         </h1>
         
         <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-2xl mx-auto leading-relaxed font-light drop-shadow-lg">
-          Ich helfe Kleinunternehmen dabei, den Schritt in die digitale Welt zu wagen. 
-          Ehrlich, persönlich und ohne kompliziertes Fach-Chinesisch.
+          {t('hero.description')}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-5 justify-center mb-20">
@@ -53,13 +54,13 @@ const Hero: React.FC = () => {
             onClick={() => scrollToSection('kontaktformular')}
             className="px-12 py-5 bg-white text-black rounded-2xl font-black text-lg hover:scale-105 transition-all shadow-2xl shadow-white/10"
           >
-            Angebot einholen
+            {t('hero.ctaPrimary')}
           </button>
           <button 
             onClick={() => scrollToSection('leistungen')}
             className="px-12 py-5 bg-white/5 backdrop-blur-md text-white border border-white/10 rounded-2xl font-black text-lg hover:bg-white/10 transition-all"
           >
-            Leistungen
+            {t('hero.ctaSecondary')}
           </button>
         </div>
 

@@ -1,13 +1,15 @@
 
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Legal: React.FC = () => {
+  const { t } = useLanguage();
   return (
     <div className="py-32 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
       <div className="space-y-24">
         {/* Impressum Section */}
         <section id="impressum">
-          <h1 className="text-5xl font-black mb-12 text-white tracking-tighter">Impressum (Aviso Legal)</h1>
+          <h1 className="text-5xl font-black mb-12 text-white tracking-tighter">{t('legal.impressum')}</h1>
           <div className="space-y-8 text-gray-300 font-light leading-relaxed">
             <div>
               <h2 className="text-xl font-bold text-white mb-3 uppercase tracking-widest text-sm">Angaben gemäß LSSI-CE</h2>
@@ -51,7 +53,7 @@ const Legal: React.FC = () => {
 
         {/* Privacy Policy Section */}
         <section id="datenschutz" className="pt-24 border-t border-white/5">
-          <h1 className="text-5xl font-black mb-12 text-white tracking-tighter">Datenschutzerklärung</h1>
+          <h1 className="text-5xl font-black mb-12 text-white tracking-tighter">{t('legal.datenschutz')}</h1>
           <div className="space-y-10 text-gray-300 font-light leading-relaxed">
             <div>
               <h2 className="text-2xl font-bold text-white mb-4">1. Information über die Erhebung personenbezogener Daten</h2>

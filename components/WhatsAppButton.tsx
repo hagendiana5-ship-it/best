@@ -1,9 +1,11 @@
 
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const WhatsAppButton: React.FC = () => {
+  const { t } = useLanguage();
   const phoneNumber = "34603361949";
-  const message = encodeURIComponent("Hallo Diana, ich habe deine Website gesehen und interessiere mich für ein gratis Sample!");
+  const message = encodeURIComponent(t('whatsapp.message'));
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (
@@ -14,7 +16,7 @@ const WhatsAppButton: React.FC = () => {
       className="fixed bottom-8 right-8 z-[100] group flex items-center gap-4"
     >
       <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-xl text-sm font-bold opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shadow-2xl pointer-events-none">
-        Fragen? Schreib mir!
+        {t('whatsapp.tooltip')}
       </div>
       <div className="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(37,211,102,0.3)] group-hover:scale-110 transition-transform duration-300">
         <svg 

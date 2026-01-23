@@ -1,42 +1,13 @@
 import React from 'react';
-
-const plans = [
-  {
-    name: "Standardpaket",
-    setupPrice: "ab 499 €",
-    monthlyPrice: "49 €",
-    description: "Der ideale digitale Start für Kleinstunternehmen.",
-    features: [
-      "Individuelles Webdesign (1-3 Seiten)",
-      "Mobil-optimiert (Responsive)",
-      "SEO-Grundoptimierung",
-      "Kontaktformular & Google Maps",
-      "Persönliche Beratung",
-      "Wartung & Sicherheit inkl."
-    ]
-  },
-  {
-    name: "Business-Premium",
-    setupPrice: "ab 699 €",
-    monthlyPrice: "69 €",
-    description: "Mehr Power und Funktionen für dein Wachstum.",
-    recommended: true,
-    features: [
-      "Umfangreiches Design (bis 7 Seiten)",
-      "Online-Terminbuchungssystem",
-      "Erweiterte SEO-Strategie",
-      "Blog- oder News-Bereich",
-      "Priority Support (Express)",
-      "Wartung & Sicherheit inkl."
-    ]
-  }
-];
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Pricing: React.FC = () => {
+  const { t } = useLanguage();
   const phoneNumber = "34603361949";
+  const plans = t('pricing.plans');
 
   const getWhatsAppUrl = (planName: string) => {
-    const message = encodeURIComponent(`Hallo Diana, ich interessiere mich für das ${planName} und würde gerne mehr darüber erfahren!`);
+    const message = encodeURIComponent(t('pricing.whatsappMessage').replace('{planName}', planName));
     return `https://wa.me/${phoneNumber}?text=${message}`;
   };
 
@@ -44,8 +15,8 @@ const Pricing: React.FC = () => {
     <section id="preise" className="py-40 relative bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-24">
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-8 tracking-tighter">Faire Preise ohne Fallen</h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">Keine langen Knebelverträge. Monatlich kündbar, ehrlich kalkuliert.</p>
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-8 tracking-tighter">{t('pricing.title')}</h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">{t('pricing.subtitle')}</p>
         </div>
         
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
@@ -66,11 +37,11 @@ const Pricing: React.FC = () => {
               <div className="mb-12 text-center lg:text-left border-b border-white/5 pb-10">
                 <div className="flex items-baseline gap-3 justify-center lg:justify-start">
                   <span className="text-5xl md:text-6xl font-black text-white tracking-tighter whitespace-nowrap">{plan.setupPrice}</span>
-                  <span className="text-gray-500 font-bold uppercase text-xs tracking-widest">Setup</span>
+                  <span className="text-gray-500 font-bold uppercase text-xs tracking-widest">{t('pricing.setup')}</span>
                 </div>
                 <div className="mt-4 flex items-center gap-2 text-cyan-400 font-bold text-lg justify-center lg:justify-start">
                   <span className="h-px w-8 bg-cyan-400/30 hidden lg:block"></span>
-                  <span>+ {plan.monthlyPrice} / Monat Wartung</span>
+                  <span>+ {plan.monthlyPrice} {t('pricing.monthly')}</span>
                 </div>
               </div>
               <ul className="space-y-6 mb-12">
@@ -104,9 +75,9 @@ const Pricing: React.FC = () => {
                 <img key={i} className="w-12 h-12 rounded-full border-2 border-[#0f172a] object-cover" src={`https://picsum.photos/seed/user${i}/100`} alt="" />
               ))}
             </div>
-            <p className="text-gray-300 font-light text-lg">Bereits über 40 Kleinunternehmen vertrauen auf Diana.</p>
+            <p className="text-gray-300 font-light text-lg">{t('pricing.trust')}</p>
             <div className="h-10 w-[1px] bg-white/10 hidden sm:block"></div>
-            <p className="text-purple-400 font-black uppercase tracking-widest text-sm">Monatlich kündbar</p>
+            <p className="text-purple-400 font-black uppercase tracking-widest text-sm">{t('pricing.cancelable')}</p>
           </div>
         </div>
       </div>

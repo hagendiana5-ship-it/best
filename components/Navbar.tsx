@@ -1,10 +1,12 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface NavbarProps {
   onHomeClick: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
+  const { t } = useLanguage();
   const handleStartClick = (e: React.MouseEvent) => {
     e.preventDefault();
     onHomeClick();
@@ -43,10 +45,10 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
           </div>
           <div className="hidden md:flex space-x-8 lg:space-x-10">
             {[
-              { label: 'Startseite', id: 'top' },
-              { label: 'Leistungen', id: 'leistungen' },
-              { label: 'Preismodelle', id: 'preise' },
-              { label: 'Über mich', id: 'über-mich' }
+              { label: t('nav.startseite'), id: 'top' },
+              { label: t('nav.leistungen'), id: 'leistungen' },
+              { label: t('nav.preismodelle'), id: 'preise' },
+              { label: t('nav.überMich'), id: 'über-mich' }
             ].map((item) => (
               <a 
                 key={item.id}
@@ -67,7 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
               onClick={handleStartClick}
               className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-2.5 rounded-full font-bold hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all"
             >
-              Jetzt starten
+              {t('nav.jetztStarten')}
             </a>
           </div>
         </div>

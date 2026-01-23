@@ -10,9 +10,12 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Legal from './components/Legal';
 import WhatsAppButton from './components/WhatsAppButton';
+import { useLanguage } from './contexts/LanguageContext';
+import { Language } from './translations';
 
 const App: React.FC = () => {
   const [view, setView] = useState<'home' | 'legal'>('home');
+  const { language, setLanguage } = useLanguage();
 
   // Scroll to top when view changes
   useEffect(() => {
@@ -59,6 +62,23 @@ const App: React.FC = () => {
       <div className="bg-glow">
           <div className="orb" style={{ width: '600px', height: '600px', background: 'var(--primary)', top: '-5%', left: '-5%' }}></div>
           <div className="orb" style={{ width: '500px', height: '500px', background: 'var(--secondary)', bottom: '-10%', right: '5%', animationDelay: '-10s' }}></div>
+      </div>
+
+      {/* Language Switcher */}
+      <div className="fixed top-24 right-4 z-50 flex gap-2 bg-[#0f172a]/80 backdrop-blur-xl border border-white/10 rounded-full p-1">
+        {(['de', 'en', 'es'] as Language[]).map((lang) => (
+          <button
+            key={lang}
+            onClick={() => setLanguage(lang)}
+            className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${
+              language === lang
+                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg'
+                : 'text-gray-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            {lang.toUpperCase()}
+          </button>
+        ))}
       </div>
 
       <Navbar onHomeClick={() => setView('home')} />
