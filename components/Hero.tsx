@@ -12,7 +12,6 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative pt-32 pb-40 overflow-hidden min-h-[90vh] flex items-center justify-center">
-      {/* Hintergrund-Video */}
       <div className="absolute inset-0 z-0 opacity-40">
         <video
           autoPlay
@@ -65,11 +64,11 @@ const Hero: React.FC = () => {
 
         <div className="relative max-w-4xl mx-auto group">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-          {/* HIER IST DEIN BILD EINGEBAUT */}
+          {/* Geänderter Dateiname hier unten */}
           <img 
-            src="/foto.jpg" 
+            src="/hero-bg.jpg.jpg" 
             alt="Design Preview" 
-            className="relative rounded-3xl shadow-2xl border border-white/10 object-cover w-full aspect-[21/9] grayscale-[20%] group-hover:grayscale-0 transition duration-700"
+            className="relative rounded-3xl shadow-2xl border border-white/10 object-cover w-full aspect-[21/9] transition duration-700"
           />
         </div>
       </div>
