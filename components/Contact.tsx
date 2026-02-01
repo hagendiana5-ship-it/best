@@ -3,6 +3,10 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
+  
+  // Deine WhatsApp-Nummer (Format: Landeskennzahl ohne + oder 00)
+  const whatsappNummer = "4917631317666"; 
+
   return (
     <section id="kontaktformular" className="py-20 relative bg-transparent overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -14,14 +18,29 @@ const Contact: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-10 relative z-10">
             <div className="lg:w-1/3 text-center lg:text-left">
               <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">{t('contact.title')}</h2>
-              <p className="text-gray-400 font-light leading-relaxed">
+              <p className="text-gray-400 font-light leading-relaxed mb-6">
                 {t('contact.subtitle')}
               </p>
+              
+              {/* WhatsApp Button */}
+              <a 
+                href={`https://wa.me/${whatsappNummer}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-6 py-3 bg-green-500/10 border border-green-500/20 rounded-2xl text-green-400 font-bold hover:bg-green-500/20 transition-all duration-300 group"
+              >
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                {t('contact.whatsapp') || 'WhatsApp Kontakt'}
+                <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
             </div>
 
             <div className="flex-grow w-full">
+              {/* Dein Formspree Link ist hier eingebaut */}
               <form 
-                action="DEIN-LINK-HIER" 
+                action="https://formspree.io/f/xpqldnod" 
                 method="POST" 
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
               >
@@ -48,7 +67,6 @@ const Contact: React.FC = () => {
                     <option value="4-7" className="bg-[#0f172a]">4 bis 7 Seiten</option>
                     <option value="8+" className="bg-[#0f172a]">Mehr als 7 Seiten</option>
                   </select>
-                  {/* Custom Arrow for Select */}
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                   </div>
